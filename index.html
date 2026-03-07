@@ -266,8 +266,11 @@ footer{background:var(--navy);color:#fff;padding:64px 0 28px}
 
 /* LANGUAGE */
 [data-lang="es"]{display:none}
+[data-lang="pt"]{display:none}
 body.lang-es [data-lang="en"]{display:none}
 body.lang-es [data-lang="es"]{display:unset}
+body.lang-pt [data-lang="en"]{display:none}
+body.lang-pt [data-lang="pt"]{display:unset}
 .dn{display:none!important}
 .db{display:block!important}
 
@@ -705,7 +708,7 @@ body.lang-es [data-lang="es"]{display:unset}
         </div>
       </div>
       <div class="quote-form reveal" id="estimate">
-        <h3 data-lang="en">Get a Free Estimate</h3><h3 data-lang="es">Obtener Presupuesto Gratis</h3>
+        <h3 data-lang="en">Get a Free Estimate</h3><h3 data-lang="es">Obtener Presupuesto Gratis</h3><h3 data-lang="pt">Obter Orçamento Gratuito</h3>
         <div data-lang="en">
           <iframe data-tally-src="https://tally.so/r/vGByMA?transparentBackground=1&amp;dynamicHeight=1"
                   loading="lazy" width="100%" height="720"
@@ -717,6 +720,12 @@ body.lang-es [data-lang="es"]{display:unset}
                   loading="lazy" width="100%" height="720"
                   frameborder="0" marginheight="0" marginwidth="0"
                   title="Top Clean - Presupuesto Gratis"></iframe>
+        </div>
+        <div data-lang="pt">
+          <iframe data-tally-src="https://tally.so/r/vGByMA?transparentBackground=1&amp;dynamicHeight=1"
+                  loading="lazy" width="100%" height="720"
+                  frameborder="0" marginheight="0" marginwidth="0"
+                  title="Top Clean - Orçamento Gratuito"></iframe>
         </div>
       </div>
     </div>
@@ -814,6 +823,7 @@ body.lang-es [data-lang="es"]{display:unset}
 // Language
 function setLang(lang){
   document.body.classList.toggle('lang-es',lang==='es');
+  document.body.classList.toggle('lang-pt',lang==='pt');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   document.getElementById('btn-es').classList.toggle('active',lang==='es');
   localStorage.setItem('tc_lang',lang);
