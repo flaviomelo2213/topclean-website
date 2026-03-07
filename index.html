@@ -330,7 +330,7 @@ body.lang-es [data-lang="es"]{display:unset}
       </ul>
       <div class="nav-cta">
         <a href="tel:+18545006258" class="btn-call">📞 854-500-6258</a>
-        <a href="#contact" class="btn-primary"><span data-lang="en">Free Quote</span><span data-lang="es">Cotización Gratis</span></a>
+        <a href="#estimate" class="btn-primary"><span data-lang="en">Free Quote</span><span data-lang="es">Cotización Gratis</span></a>
       </div>
       <button class="mobile-menu-btn">☰</button>
     </div>
@@ -613,7 +613,7 @@ body.lang-es [data-lang="es"]{display:unset}
           <li><span class="check">✓</span> <span data-lang="en">Carpet cleaning</span><span data-lang="es">Limpieza de alfombras</span></li>
           <li><span class="check">✓</span> <span data-lang="en">Recurring contracts</span><span data-lang="es">Contratos recurrentes</span></li>
         </ul>
-        <a href="#contact" class="btn-outline" data-lang="en">Get Free Quote</a><a href="#contact" class="btn-outline" data-lang="es">Obtener Cotización</a>
+        <a href="#estimate" class="btn-outline" data-lang="en">Get Free Quote</a><a href="#estimate" class="btn-outline" data-lang="es">Obtener Cotización</a>
       </div>
     </div>
   </div>
@@ -704,56 +704,19 @@ body.lang-es [data-lang="es"]{display:unset}
           </div>
         </div>
       </div>
-      <div class="quote-form reveal">
-        <h3 data-lang="en">Request a Free Quote</h3><h3 data-lang="es">Solicitar Cotización Gratis</h3>
-        <p data-lang="en">Fill out the form and we'll contact you within 1 hour during business hours.</p>
-        <p data-lang="es">Completa el formulario y te contactaremos en 1 hora en horario hábil.</p>
-        <div class="success-msg" id="successMsg">✅ <span data-lang="en">Thank you! We'll be in touch shortly.</span><span data-lang="es">¡Gracias! Te contactaremos en breve.</span></div>
-        <div id="qFields">
-          <div class="form-2col">
-            <div class="form-group">
-              <label data-lang="en">Full Name</label><label data-lang="es">Nombre Completo</label>
-              <input type="text" id="fname" placeholder="John Smith">
-            </div>
-            <div class="form-group">
-              <label data-lang="en">Phone / Text</label><label data-lang="es">Teléfono / SMS</label>
-              <input type="tel" id="fphone" placeholder="(843) 000-0000">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="femail" placeholder="you@email.com">
-          </div>
-          <div class="form-group">
-            <label data-lang="en">Service Needed</label><label data-lang="es">Servicio Necesario</label>
-            <select id="fservice">
-              <option value="" disabled selected>-- Select / Seleccionar --</option>
-              <option>Residential Cleaning / Limpieza Residencial</option>
-              <option>Commercial Cleaning / Limpieza Comercial</option>
-              <option>Handyman Services</option>
-              <option>Deep Cleaning / Limpieza Profunda</option>
-              <option>Move-In / Move-Out Cleaning</option>
-              <option>Post-Construction / Post-Construcción</option>
-              <option>Carpet Cleaning / Limpieza de Alfombras</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-lang="en">County / City</label><label data-lang="es">Condado / Ciudad</label>
-            <select id="fcounty">
-              <option value="" disabled selected>-- Select / Seleccionar --</option>
-              <option>Charleston County</option>
-              <option>Berkeley County</option>
-              <option>Dorchester County</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label data-lang="en">Tell us about your space</label><label data-lang="es">Cuéntanos sobre tu espacio</label>
-            <textarea id="fmsg" placeholder="Number of rooms, size, special requests... / Número de habitaciones, tamaño, solicitudes especiales..."></textarea>
-          </div>
-          <button class="btn-submit" onclick="submitForm()">
-            <span data-lang="en">🚀 Send Request — We'll Contact You Shortly!</span>
-            <span data-lang="es">🚀 Enviar — ¡Te Contactaremos Pronto!</span>
-          </button>
+      <div class="quote-form reveal" id="estimate">
+        <h3 data-lang="en">Get a Free Estimate</h3><h3 data-lang="es">Obtener Presupuesto Gratis</h3>
+        <div data-lang="en">
+          <iframe data-tally-src="https://tally.so/r/vGByMA?transparentBackground=1&amp;dynamicHeight=1"
+                  loading="lazy" width="100%" height="720"
+                  frameborder="0" marginheight="0" marginwidth="0"
+                  title="Top Clean - Free Quote"></iframe>
+        </div>
+        <div data-lang="es">
+          <iframe data-tally-src="https://tally.so/r/VLl5QE?transparentBackground=1&amp;dynamicHeight=1"
+                  loading="lazy" width="100%" height="720"
+                  frameborder="0" marginheight="0" marginwidth="0"
+                  title="Top Clean - Presupuesto Gratis"></iframe>
         </div>
       </div>
     </div>
@@ -913,13 +876,7 @@ function sendChat(){
   addMsg(reply,'bot');
 }
 
-// Form
-function submitForm(){
-  var name=document.getElementById('fname').value;
-  var phone=document.getElementById('fphone').value;
-  var email=document.getElementById('femail').value;
-  if(!name||(!phone&&!email)){
-    alert('Please fill in your name and at least a phone number or email. / Por favor completa tu nombre y al menos un teléfono o email.');
-    return;
-  }
-  document.getElementById('qFiel
+</script>
+<script async src="https://tally.so/widgets/embed.js"></script>
+</body>
+</html>
