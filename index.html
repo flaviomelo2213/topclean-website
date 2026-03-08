@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="googlebot" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top Clean Cleaning & Services | Charleston, SC | Professional with a personal touch!</title>
 <meta name="description" content="Licensed & insured cleaning and handyman in Charleston, Berkeley & Dorchester County, SC. Deep cleaning, move-out & post-construction. Free quote!">
@@ -829,7 +831,7 @@ function setLang(lang){
   localStorage.setItem('tc_lang',lang);
   document.querySelectorAll('.chat-input').forEach(el=>el.placeholder=lang==='es'?'Escribe un mensaje...':'Type a message...');
 }
-(function(){var l=localStorage.getItem('tc_lang');if(l)setLang(l)})();
+(function(){var l=localStorage.getItem('tc_lang');if(l==='es')setLang('es')})();
 
 // Chat
 var chatOpen=false;
