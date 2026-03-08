@@ -83,7 +83,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop
 .mobile-menu-btn{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--navy)}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2a5c 60%,#1a3a7a 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 0}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0f2a5c 60%,#1a3a7a 100%);min-height:88vh;display:flex;align-items:center;position:relative;overflow:visible;padding:60px 0}
 .hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 70%);border-radius:50%}
 .hero::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(26,79,196,.15) 0%,transparent 70%);border-radius:50%}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:2}
@@ -102,7 +102,7 @@ nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop
 .hero-stat span{font-size:12px;color:rgba(255,255,255,.6)}
 .hero-image-wrap{position:relative;z-index:1}
 .hero-image-wrap img{width:100%;border-radius:24px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
-.hero-floating{position:absolute;bottom:20px;left:-20px;background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 10px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:12px}
+.hero-floating{position:absolute;bottom:-18px;left:10px;background:#fff;border-radius:16px;padding:14px 20px;box-shadow:0 10px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:12px}
 .hero-floating strong{display:block;font-size:14px;font-weight:700;color:var(--navy)}
 .hero-floating span{font-size:12px;color:var(--gray)}
 .hero-float2{position:absolute;top:20px;right:-20px;background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;border-radius:16px;padding:12px 18px;box-shadow:0 10px 30px rgba(26,79,196,.4);font-weight:700;font-size:13px;text-align:center}
@@ -715,21 +715,21 @@ body.lang-pt [data-lang="pt"]{display:unset}
         <div data-lang="en">
           <p style="text-align:center;margin-bottom:10px"><a href="https://tally.so/r/vGByMA" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;text-decoration:none;padding:10px 20px;font-size:14px">&#128196; Open Quote Form</a></p>
           <iframe src="https://tally.so/r/vGByMA?transparentBackground=1"
-                  loading="lazy" width="100%" height="950"
-                  style="border:0; border-radius:12px;"
+                  loading="eager" width="100%" height="950"
+                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
                   title="Top Clean - Free Quote"></iframe>
         </div>
         <div data-lang="es">
           <p style="text-align:center;margin-bottom:10px"><a href="https://tally.so/r/VLl5QE" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;text-decoration:none;padding:10px 20px;font-size:14px">&#128196; Abrir formulario</a></p>
           <iframe src="https://tally.so/r/VLl5QE?transparentBackground=1"
-                  loading="lazy" width="100%" height="950"
-                  style="border:0; border-radius:12px;"
+                  loading="eager" width="100%" height="950"
+                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
                   title="Top Clean - Presupuesto Gratis"></iframe>
         </div>
         <div data-lang="pt">
           <iframe src="https://tally.so/r/vGByMA?transparentBackground=1"
-                  loading="lazy" width="100%" height="950"
-                  style="border:0; border-radius:12px;"
+                  loading="eager" width="100%" height="950"
+                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
                   title="Top Clean - Orçamento Gratuito"></iframe>
         </div>
       </div>
@@ -804,20 +804,7 @@ body.lang-pt [data-lang="pt"]{display:unset}
     </div>
     <button onclick="toggleChat()" style="background:none;border:none;color:rgba(255,255,255,.7);cursor:pointer;font-size:18px;margin-left:auto">✕</button>
   </div>
-  <div class="chat-body" id="chatBody">
-    <div class="chat-msg bot" data-lang="en">👋 Hi! I'm the Top Clean assistant. How can I help you today?</div>
-    <div class="chat-msg bot" data-lang="es">👋 ¡Hola! Soy el asistente de Top Clean. ¿Cómo puedo ayudarte hoy?</div>
-    <div class="chat-options">
-      <button class="chat-opt" onclick="chatSelect(this,'get-quote')" data-lang="en">💰 Get a Quote</button>
-      <button class="chat-opt" onclick="chatSelect(this,'get-quote')" data-lang="es">💰 Obtener Cotización</button>
-      <button class="chat-opt" onclick="chatSelect(this,'services')" data-lang="en">🧹 Our Services</button>
-      <button class="chat-opt" onclick="chatSelect(this,'services')" data-lang="es">🧹 Nuestros Servicios</button>
-      <button class="chat-opt" onclick="chatSelect(this,'areas')" data-lang="en">📍 Service Areas</button>
-      <button class="chat-opt" onclick="chatSelect(this,'areas')" data-lang="es">📍 Áreas de Servicio</button>
-      <button class="chat-opt" onclick="chatSelect(this,'contact')" data-lang="en">📞 Contact Us</button>
-      <button class="chat-opt" onclick="chatSelect(this,'contact')" data-lang="es">📞 Contáctanos</span></button>
-    </div>
-  </div>
+  <div class="chat-body" id="chatMessages"></div>
   <div class="chat-footer">
     <input class="chat-input" id="chatInput" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendChat()">
     <button class="chat-send" onclick="sendChat()">➤</button>
@@ -825,81 +812,186 @@ body.lang-pt [data-lang="pt"]{display:unset}
 </div>
 
 <script>
-// Language
+// ── Language ──────────────────────────────────────────────────
 function setLang(lang){
   document.body.classList.toggle('lang-es',lang==='es');
   document.body.classList.toggle('lang-pt',lang==='pt');
   document.getElementById('btn-en').classList.toggle('active',lang==='en');
   document.getElementById('btn-es').classList.toggle('active',lang==='es');
   localStorage.setItem('tc_lang',lang);
-  document.querySelectorAll('.chat-input').forEach(el=>el.placeholder=lang==='es'?'Escribe un mensaje...':'Type a message...');
+  var ph=document.getElementById('chatInput');
+  if(ph)ph.placeholder=lang==='es'?'Escribe un mensaje...':'Type a message...';
 }
-(function(){var l=localStorage.getItem('tc_lang');if(l==='es')setLang('es')})();
+(function(){var l=localStorage.getItem('tc_lang');if(l==='es')setLang('es');})();
 
-// Chat — guided lead collector
-var chatOpen=false;
-var chatStep=0;
-var chatLead={};
-function toggleChat(){chatOpen=!chatOpen;document.getElementById('chatWindow').classList.toggle('open',chatOpen);if(chatOpen&&chatStep===0)startChat();}
-function startChat(){
-  chatStep=1;
-  var lang=(document.documentElement.lang||'en').toLowerCase();
-  var msg=lang==='es'
-    ?'¡Hola! 👋 ¿Qué servicio necesitas?\n\n1️⃣ Limpieza\n2️⃣ Handyman\n3️⃣ No sé aún'
-    :'Hi! 👋 What service do you need?\n\n1️⃣ Cleaning\n2️⃣ Handyman\n3️⃣ Not sure yet';
-  addMsg(msg,'bot');
+// ── Chat ─ multi-step lead collector ─────────────────────────
+// IMPORTANT: get your FREE key at https://web3forms.com then paste it below
+var WEB3FORMS_KEY='COLOQUE_SUA_CHAVE_WEB3FORMS_AQUI';
+
+var chatOpen=false,chatStep=0,chatLead={};
+var LEAD_FIELDS=['','service','propType','zip','name','phone','email','address','details','bestTime','done'];
+
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatWindow').classList.toggle('open',chatOpen);
+  if(chatOpen&&chatStep===0)startChat();
 }
-function addMsg(text,who){
+function openChat(){toggleChat();}
+function isES(){return document.body.classList.contains('lang-es');}
+
+function addMsg(html,who,opts){
   var d=document.getElementById('chatMessages');
   var b=document.createElement('div');
-  b.className='chat-msg chat-'+who;
-  b.innerHTML=text.replace(/\n/g,'<br>');
+  b.className='chat-msg '+who;
+  b.innerHTML=html;
   d.appendChild(b);
+  if(opts&&opts.length){
+    var row=document.createElement('div');
+    row.className='chat-options';
+    opts.forEach(function(o){
+      var btn=document.createElement('button');
+      btn.className='chat-opt';
+      btn.textContent=o.label;
+      btn.onclick=function(){
+        row.querySelectorAll('.chat-opt').forEach(function(b2){b2.disabled=true;b2.style.opacity='0.45';});
+        addMsg(o.label,'user');
+        chatLead[LEAD_FIELDS[chatStep]]=o.value||o.label;
+        chatStep++;
+        setTimeout(nextStep,350);
+      };
+      row.appendChild(btn);
+    });
+    d.appendChild(row);
+  }
   d.scrollTop=d.scrollHeight;
 }
-function sendChat(){
-  var inp=document.querySelector('.chat-input');
-  var val=inp.value.trim();
-  if(!val)return;
-  addMsg(val,'user');
-  inp.value='';
-  var lang=(document.documentElement.lang||'en').toLowerCase();
-  setTimeout(function(){handleStep(val,lang);},300);
+
+function startChat(){
+  chatStep=1;chatLead={};
+  var es=isES();
+  addMsg(
+    es?'\U0001f44b \u00a1Hola! Soy el asistente de Top Clean.<br>\u00bfQu\u00e9 servicio necesitas?'
+      :'\U0001f44b Hi! I\'m the Top Clean assistant.<br>What service do you need?',
+    'bot',
+    es?[{label:'\U0001f9f9 Limpieza',value:'Cleaning'},
+        {label:'\U0001f6e0\ufe0f Handyman',value:'Handyman'},
+        {label:'\U0001f3e0 Ambos',value:'Both'},
+        {label:'\u2753 No s\u00e9',value:'Not sure'}]
+      :[{label:'\U0001f9f9 Cleaning',value:'Cleaning'},
+        {label:'\U0001f6e0\ufe0f Handyman',value:'Handyman'},
+        {label:'\U0001f3e0 Both',value:'Both'},
+        {label:'\u2753 Not sure',value:'Not sure'}]
+  );
 }
-function handleStep(val,lang){
-  if(chatStep===1){
-    chatLead.service=val;
-    chatStep=2;
-    var msg=lang==='es'?'¿Cuál es tu ZIP Code?':'What is your ZIP Code?';
-    addMsg(msg,'bot');
-  } else if(chatStep===2){
-    chatLead.zip=val;
-    chatStep=3;
-    var tally=lang==='es'?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
-    var sms='sms:+18545006258';
-    var tel='tel:+18545006258';
-    var svc=chatLead.service;
-    var reply=lang==='es'
-      ?'¡Perfecto! Solicitud:<br><b>Servicio: '+svc+' | ZIP: '+val+'</b><br><br>'
-       +'<a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Abrir formulario</a><br>'
-       +'<a href="'+sms+'" class="btn-hero" style="background:linear-gradient(135deg,#25D366,#128C7E);display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">💬 Enviar SMS</a><br>'
-       +'<a href="'+tel+'" class="btn-call" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📞 Llamar — 854-500-6258</a>'
-      :'Perfect! Your request:<br><b>Service: '+svc+' | ZIP: '+val+'</b><br><br>'
-       +'<a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Open Quote Form</a><br>'
-       +'<a href="'+sms+'" class="btn-hero" style="background:linear-gradient(135deg,#25D366,#128C7E);display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">💬 Text us</a><br>'
-       +'<a href="'+tel+'" class="btn-call" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📞 Call — 854-500-6258</a>';
-    addMsg(reply,'bot');
-  } else {
-    var tally2=lang==='es'?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
-    addMsg(
-      lang==='es'
-        ?'Para más ayuda llama al <b>854-500-6258</b> o <a href="'+tally2+'" target="_blank">abre el formulario</a>.'
-        :'For help call <b>854-500-6258</b> or <a href="'+tally2+'" target="_blank">open the form</a>.',
-      'bot');
+
+function nextStep(){
+  var es=isES();
+  switch(chatStep){
+    case 2:
+      addMsg(
+        es?'\u00bfEs residencial o comercial?':'Residential or commercial?',
+        'bot',
+        es?[{label:'\U0001f3e0 Residencial',value:'Residential'},{label:'\U0001f3e2 Comercial',value:'Commercial'}]
+          :[{label:'\U0001f3e0 Residential',value:'Residential'},{label:'\U0001f3e2 Commercial',value:'Commercial'}]
+      );break;
+    case 3:
+      addMsg(es?'\U0001f4cd C\u00f3digo ZIP:':'\U0001f4cd ZIP code:','bot');break;
+    case 4:
+      addMsg(es?'\U0001f464 Tu nombre:':'\U0001f464 Your name:','bot');break;
+    case 5:
+      addMsg(es?'\U0001f4f1 N\u00famero de tel\u00e9fono:':'\U0001f4f1 Phone number:','bot');break;
+    case 6:
+      addMsg(es?'\U0001f4e7 Email (o escribe "no"):':'\U0001f4e7 Email (or type "skip"):','bot');break;
+    case 7:
+      addMsg(es?'\U0001f3e0 Direcci\u00f3n de la propiedad (o "no"):':'\U0001f3e0 Property address (or "skip"):','bot');break;
+    case 8:
+      addMsg(es?'\U0001f4dd Detalles adicionales (tama\u00f1o, frecuencia, necesidades especiales):':'\U0001f4dd Additional details (size, frequency, special needs):','bot');break;
+    case 9:
+      addMsg(
+        es?'\u23f0 Mejor horario para contactarte?':'\u23f0 Best time to reach you?',
+        'bot',
+        es?[{label:'\U0001f31e Ma\u00f1ana 8am-12pm',value:'Morning'},
+            {label:'\u2600\ufe0f Tarde 12pm-5pm',value:'Afternoon'},
+            {label:'\U0001f315 Noche 5pm-8pm',value:'Evening'},
+            {label:'\u2705 Cualquier hora',value:'Anytime'}]
+          :[{label:'\U0001f31e Morning 8am-12pm',value:'Morning'},
+            {label:'\u2600\ufe0f Afternoon 12pm-5pm',value:'Afternoon'},
+            {label:'\U0001f315 Evening 5pm-8pm',value:'Evening'},
+            {label:'\u2705 Anytime',value:'Anytime'}]
+      );break;
+    case 10:
+      submitLead();break;
   }
 }
 
-// Reveal animation — IntersectionObserver
+function sendChat(){
+  var inp=document.getElementById('chatInput');
+  var val=(inp.value||'').trim();
+  if(!val)return;
+  // Button-driven steps don't need text input
+  if(chatStep<=2||chatStep===9||chatStep>=10)return;
+  addMsg(val,'user');
+  inp.value='';
+  var skip=(val.toLowerCase()==='skip'||val.toLowerCase()==='no'||val==='-');
+  chatLead[LEAD_FIELDS[chatStep]]=skip?'':val;
+  chatStep++;
+  setTimeout(nextStep,350);
+}
+
+function submitLead(){
+  var es=isES();
+  var tally=es?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
+  addMsg(es?'\u23f3 Enviando solicitud...':'\u23f3 Sending your request...','bot');
+  var nm=chatLead.name||'';
+  var payload={
+    access_key:WEB3FORMS_KEY,
+    subject:'\U0001f9f9 New Lead \u2014 Top Clean Chat: '+(nm||'Unknown'),
+    from_name:'Top Clean Website',
+    replyto:chatLead.email||'no-reply@topcleanservicesllc.com',
+    'Service':chatLead.service||'\u2014',
+    'Property_Type':chatLead.propType||'\u2014',
+    'ZIP':chatLead.zip||'\u2014',
+    'Name':nm||'\u2014',
+    'Phone':chatLead.phone||'\u2014',
+    'Email':chatLead.email||'\u2014',
+    'Address':chatLead.address||'\u2014',
+    'Details':chatLead.details||'\u2014',
+    'Best_Time':chatLead.bestTime||'\u2014',
+    'Language':es?'Spanish':'English'
+  };
+  var configured=(WEB3FORMS_KEY!=='COLOQUE_SUA_CHAVE_WEB3FORMS_AQUI');
+  if(configured){
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(function(r){return r.json();})
+      .then(function(d){d.success?showConfirm(es,tally,nm):showFallback(es,tally);})
+      .catch(function(){showFallback(es,tally);});
+  } else {
+    setTimeout(function(){showConfirm(es,tally,nm);},500);
+  }
+}
+
+function showConfirm(es,tally,nm){
+  var n=nm?' '+nm:'';
+  addMsg(
+    es?'\u2705 <b>\u00a1Gracias'+n+'!</b> Recibimos tu solicitud.<br>Te contactamos en <b>menos de 1 hora</b> al n\u00famero '+
+       (chatLead.phone||'informado')+'.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">\U0001f4cb Formulario completo</a>'
+      :'\u2705 <b>Thank you'+n+'!</b> We got your request.<br>We\'ll call/text you at <b>'+(chatLead.phone||'your number')+' within 1 hour</b>.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">\U0001f4cb Full Quote Form</a>',
+    'bot'
+  );
+}
+
+function showFallback(es,tally){
+  addMsg(
+    es?'\u26a0\ufe0f Error al enviar. Ll\u00e1manos:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">\U0001f4de 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">\U0001f4cb Formulario</a>'
+      :'\u26a0\ufe0f Submission error. Please call:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">\U0001f4de 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">\U0001f4cb Quote Form</a>',
+    'bot'
+  );
+}
+
+// ── Reveal animation ──────────────────────────────────────────
 (function(){
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
@@ -907,7 +999,7 @@ function handleStep(val,lang){
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 })();
 
-// Estimate scroll
+// ── Estimate scroll ───────────────────────────────────────────
 function openEstimate(e){
   if(e)e.preventDefault();
   var el=document.getElementById('estimate');
