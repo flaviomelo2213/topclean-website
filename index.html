@@ -890,6 +890,17 @@ function sendChat(){
   addMsg(reply,'bot');
 }
 
+// Smooth scroll to #estimate on load / hashchange
+(function(){
+  function goEstimate(){
+    if(location.hash==='#estimate'){
+      var el=document.getElementById('estimate');
+      if(el){setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},120);}
+    }
+  }
+  window.addEventListener('hashchange',goEstimate);
+  window.addEventListener('load',goEstimate);
+})();
 </script>
 <script async src="https://tally.so/widgets/embed.js"></script>
 </body>
