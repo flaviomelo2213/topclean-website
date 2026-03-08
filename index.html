@@ -209,6 +209,7 @@ section{padding:80px 0}
 .contact-item span{font-size:13px;color:var(--gray)}
 .contact-item a{color:var(--blue);text-decoration:none;font-weight:600}
 .quote-form{background:#fff;border-radius:24px;padding:36px;box-shadow:0 4px 30px rgba(0,0,0,.08)}
+#estimate{scroll-margin-top:110px}
 .quote-form h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:5px}
 .quote-form p{font-size:13px;color:var(--gray);margin-bottom:24px}
 .form-group{margin-bottom:14px}
@@ -335,7 +336,7 @@ body.lang-pt [data-lang="pt"]{display:unset}
       </ul>
       <div class="nav-cta">
         <a href="tel:+18545006258" class="btn-call">📞 854-500-6258</a>
-        <a href="#estimate" class="btn-primary"><span data-lang="en">Free Quote</span><span data-lang="es">Cotización Gratis</span></a>
+        <a href="#estimate" onclick="openEstimate(event)" class="btn-primary"><span data-lang="en">Free Quote</span><span data-lang="es">Cotización Gratis</span></a>
       </div>
       <button class="mobile-menu-btn">☰</button>
     </div>
@@ -618,7 +619,7 @@ body.lang-pt [data-lang="pt"]{display:unset}
           <li><span class="check">✓</span> <span data-lang="en">Carpet cleaning</span><span data-lang="es">Limpieza de alfombras</span></li>
           <li><span class="check">✓</span> <span data-lang="en">Recurring contracts</span><span data-lang="es">Contratos recurrentes</span></li>
         </ul>
-        <a href="#estimate" class="btn-outline" data-lang="en">Get Free Quote</a><a href="#estimate" class="btn-outline" data-lang="es">Obtener Cotización</a>
+        <a href="#estimate" onclick="openEstimate(event)" class="btn-outline" data-lang="en">Get Free Quote</a><a href="#estimate" onclick="openEstimate(event)" class="btn-outline" data-lang="es">Obtener Cotización</a>
       </div>
     </div>
   </div>
@@ -642,8 +643,8 @@ body.lang-pt [data-lang="pt"]{display:unset}
       </div>
       <div class="review-card reveal">
         <div class="stars">★★★★★</div>
-        <p data-lang="en">"Used their move-out cleaning in Goose Creek and got my FULL deposit back! Professional, on time, and extremely thorough. Luana was fantastic!"</p>
-        <p data-lang="es">"Usé su limpieza de mudanza en Goose Creek y recuperé mi depósito COMPLETO. Profesionales, puntuales y muy minuciosos. ¡Luana fue fantástica!"</p>
+        <p data-lang="en">"Used their move-out cleaning in Goose Creek and got my FULL deposit back! Professional, on time, and extremely thorough. The team was fantastic!"</p>
+        <p data-lang="es">"Usé su limpieza de mudanza en Goose Creek y recuperé mi depósito COMPLETO. Profesionales, puntuales y muy minuciosos. ¡El equipo fue fantástico!"</p>
         <div class="reviewer"><div class="reviewer-avatar">JR</div><div class="reviewer-info"><strong>James R.</strong><span>Goose Creek, SC</span></div></div>
       </div>
       <div class="review-card reveal">
@@ -835,67 +836,86 @@ function setLang(lang){
 }
 (function(){var l=localStorage.getItem('tc_lang');if(l==='es')setLang('es')})();
 
-// Chat
+// Chat — guided lead collector
 var chatOpen=false;
-function toggleChat(){chatOpen=!chatOpen;document.getElementById('chatWindow').classList.toggle('open',chatOpen)}
-function openChat(){chatOpen=true;document.getElementById('chatWindow').classList.add('open');setTimeout(function(){document.getElementById('chatInput').focus()},300)}
-
-var chatResponses={
-  'get-quote':{en:"Great! For a free quote, please call or text us:\n📱 Flávio Junior: 854-500-6258 (Call or Text)\n📱 Flávio Melo: 843-937-3641 (Text Preferred)\n📱 Luana: 843-937-3812\n📧 topcleanservices.sc@gmail.com\n\nOr fill out our contact form on this page! We'll respond within 1 hour. 🕐",es:"¡Perfecto! Para una cotización gratuita, llámanos o envíanos un mensaje:\n📱 Flávio Junior: 854-500-6258 (Llamada o SMS)\n📱 Flávio Melo: 843-937-3641 (Prefiere SMS)\n📱 Luana: 843-937-3812\n📧 topcleanservices.sc@gmail.com\n\n¡O completa nuestro formulario! Respondemos en 1 hora. 🕐"},
-  'services':{en:"We offer:\n🏠 Residential Cleaning\n🏢 Commercial & Offices\n🔨 Handyman Services\n✨ Deep Cleaning\n📦 Move-In / Move-Out\n🏗️ Post-Construction\n🧹 Carpet Cleaning\n\nServing Charleston, Berkeley & Dorchester County, SC!",es:"Ofrecemos:\n🏠 Limpieza Residencial\n🏢 Limpieza Comercial\n🔨 Servicios de Mantenimiento\n✨ Limpieza Profunda\n📦 Mudanza Entrada/Salida\n🏗️ Post-Construcción\n🧹 Limpieza de Alfombras\n\n¡Servimos Charleston, Berkeley y Dorchester, SC!"},
-  'areas':{en:"📍 We serve all of:\n• Charleston County (Downtown, North Charleston, Mount Pleasant, West Ashley, James Island, Johns Island...)\n• Berkeley County (Goose Creek, Summerville, Hanahan, Moncks Corner...)\n• Dorchester County (Summerville, St. George, Ridgeville...)",es:"📍 Servimos todo:\n• Condado de Charleston (Centro, North Charleston, Mount Pleasant, West Ashley, James Island...)\n• Condado de Berkeley (Goose Creek, Summerville, Hanahan, Moncks Corner...)\n• Condado de Dorchester (Summerville, St. George, Ridgeville...)"},
-  'contact':{en:"📞 Contact us anytime!\n\n📱 Flávio Junior: 854-500-6258 (Call or Text)\n📱 Flávio Melo: 843-937-3641 (Text Preferred)\n📱 Luana: 843-937-3812\n📧 topcleanservices.sc@gmail.com\n📸 Instagram: @topcleanservices.sc\n\n🕐 Hours: Mon–Sat 7AM–7PM",es:"📞 ¡Contáctanos cuando quieras!\n\n📱 Flávio Junior: 854-500-6258 (Llamada o SMS)\n📱 Flávio Melo: 843-937-3641 (Prefiere SMS)\n📱 Luana: 843-937-3812\n📧 topcleanservices.sc@gmail.com\n📸 Instagram: @topcleanservices.sc\n\n🕐 Horario: Lun–Sáb 7AM–7PM"}
-};
-
-function chatSelect(btn,key){
-  var lang=document.body.classList.contains('lang-es')?'es':'en';
-  var label=btn.textContent.trim();
-  addMsg(label,'user');
-  btn.closest('.chat-options').remove();
-  setTimeout(function(){addMsg(chatResponses[key][lang],'bot')},700);
+var chatStep=0;
+var chatLead={};
+function toggleChat(){chatOpen=!chatOpen;document.getElementById('chatWindow').classList.toggle('open',chatOpen);if(chatOpen&&chatStep===0)startChat();}
+function startChat(){
+  chatStep=1;
+  var lang=(document.documentElement.lang||'en').toLowerCase();
+  var msg=lang==='es'
+    ?'¡Hola! 👋 ¿Qué servicio necesitas?\n\n1️⃣ Limpieza\n2️⃣ Handyman\n3️⃣ No sé aún'
+    :'Hi! 👋 What service do you need?\n\n1️⃣ Cleaning\n2️⃣ Handyman\n3️⃣ Not sure yet';
+  addMsg(msg,'bot');
 }
-
-function addMsg(text,type){
-  var body=document.getElementById('chatBody');
-  // Typing indicator
-  if(type==='bot'){
-    var t=document.createElement('div');t.className='typing';
-    t.innerHTML='<span></span><span></span><span></span>';
-    body.appendChild(t);body.scrollTop=body.scrollHeight;
-    setTimeout(function(){
-      t.remove();
-      var m=document.createElement('div');m.className='chat-msg '+type;m.style.whiteSpace='pre-line';m.textContent=text;
-      body.appendChild(m);body.scrollTop=body.scrollHeight;
-    },900);
-  }else{
-    var m=document.createElement('div');m.className='chat-msg '+type;m.textContent=text;
-    body.appendChild(m);body.scrollTop=body.scrollHeight;
-  }
+function addMsg(text,who){
+  var d=document.getElementById('chatMessages');
+  var b=document.createElement('div');
+  b.className='chat-msg chat-'+who;
+  b.innerHTML=text.replace(/\n/g,'<br>');
+  d.appendChild(b);
+  d.scrollTop=d.scrollHeight;
 }
-
 function sendChat(){
-  var inp=document.getElementById('chatInput');
+  var inp=document.querySelector('.chat-input');
   var val=inp.value.trim();
   if(!val)return;
   addMsg(val,'user');
   inp.value='';
-  var lang=document.body.classList.contains('lang-es')?'es':'en';
-  var low=val.toLowerCase();
-  var reply;
-  if(low.match(/quote|price|cost|cotiz|precio|costo/))reply=chatResponses['get-quote'][lang];
-  else if(low.match(/service|clean|handyman|servicio|limpie/))reply=chatResponses['services'][lang];
-  else if(low.match(/area|location|where|ciudad|donde|condado/))reply=chatResponses['areas'][lang];
-  else if(low.match(/contact|phone|call|email|luana|flavio|contacto|telefono|llam/))reply=chatResponses['contact'][lang];
-  else reply=lang==='en'?"Thanks for reaching out! 😊 For the fastest response, please call or text **854-500-6258** (Flávio Junior) or text **843-937-3641** (Flávio Melo). We're here to help!":"¡Gracias por comunicarte! 😊 Para la respuesta más rápida, llama o envía un SMS al **854-500-6258** (Flávio Junior) o SMS al **843-937-3641** (Flávio Melo). ¡Estamos aquí para ayudarte!";
-  addMsg(reply,'bot');
+  var lang=(document.documentElement.lang||'en').toLowerCase();
+  setTimeout(function(){handleStep(val,lang);},300);
+}
+function handleStep(val,lang){
+  if(chatStep===1){
+    chatLead.service=val;
+    chatStep=2;
+    var msg=lang==='es'?'¿Cuál es tu ZIP Code?':'What is your ZIP Code?';
+    addMsg(msg,'bot');
+  } else if(chatStep===2){
+    chatLead.zip=val;
+    chatStep=3;
+    var tally=lang==='es'?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
+    var sms='sms:+18545006258';
+    var tel='tel:+18545006258';
+    var svc=chatLead.service;
+    var reply=lang==='es'
+      ?'¡Perfecto! Solicitud:<br><b>Servicio: '+svc+' | ZIP: '+val+'</b><br><br>'
+       +'<a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Abrir formulario</a><br>'
+       +'<a href="'+sms+'" class="btn-hero" style="background:linear-gradient(135deg,#25D366,#128C7E);display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">💬 Enviar SMS</a><br>'
+       +'<a href="'+tel+'" class="btn-call" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📞 Llamar — 854-500-6258</a>'
+      :'Perfect! Your request:<br><b>Service: '+svc+' | ZIP: '+val+'</b><br><br>'
+       +'<a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Open Quote Form</a><br>'
+       +'<a href="'+sms+'" class="btn-hero" style="background:linear-gradient(135deg,#25D366,#128C7E);display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">💬 Text us</a><br>'
+       +'<a href="'+tel+'" class="btn-call" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📞 Call — 854-500-6258</a>';
+    addMsg(reply,'bot');
+  } else {
+    var tally2=lang==='es'?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
+    addMsg(
+      lang==='es'
+        ?'Para más ayuda llama al <b>854-500-6258</b> o <a href="'+tally2+'" target="_blank">abre el formulario</a>.'
+        :'For help call <b>854-500-6258</b> or <a href="'+tally2+'" target="_blank">open the form</a>.',
+      'bot');
+  }
 }
 
-// Smooth scroll to #estimate on load / hashchange
+// Estimate scroll
+function openEstimate(e){
+  if(e)e.preventDefault();
+  var el=document.getElementById('estimate');
+  if(!el)return;
+  var y=el.getBoundingClientRect().top+window.pageYOffset-110;
+  window.scrollTo({top:y,behavior:'smooth'});
+  history.pushState(null,null,'#estimate');
+}
 (function(){
   function goEstimate(){
     if(location.hash==='#estimate'){
       var el=document.getElementById('estimate');
-      if(el){setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},120);}
+      if(el){setTimeout(function(){
+        var y=el.getBoundingClientRect().top+window.pageYOffset-110;
+        window.scrollTo({top:y,behavior:'smooth'});
+      },150);}
     }
   }
   window.addEventListener('hashchange',goEstimate);
