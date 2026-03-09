@@ -47,7 +47,7 @@
   "slogan": "Professional with a personal touch!",
   "address": {"@type": "PostalAddress","addressLocality": "Charleston","addressRegion": "SC","addressCountry": "US"},
   "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-  "serviceType": ["Residential Cleaning","Commercial Cleaning","Handyman Services","Deep Cleaning","Move-in Move-out Cleaning","Post-Construction Cleaning","Carpet Cleaning"],
+  "serviceType": ["Residential Cleaning","Commercial Cleaning","Handyman Services","Deep Cleaning","Move-in Move-out Cleaning","Post-Construction Cleaning","Carpet Cleaning","Airbnb Turnover Cleaning"],
   "priceRange": "$$",
   "openingHours": "Mo-Sa 07:00-19:00",
   "sameAs": ["https://www.instagram.com/topcleanservices.sc/"],
@@ -59,6 +59,68 @@
     "bestRating": "5",
     "worstRating": "1",
     "reviewCount": "3"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Cleaning & Handyman Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "House Cleaning",
+          "description": "Regular residential house cleaning including kitchen, bathrooms, bedrooms, living areas, vacuuming and mopping."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Deep Cleaning",
+          "description": "Comprehensive deep cleaning including inside appliances, cabinets, baseboards, ceiling fans, grout scrubbing and full bathroom sanitization."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Move-In / Move-Out Cleaning",
+          "description": "Thorough move-out and move-in cleaning covering appliances, cabinets, closets and all surfaces. Helps recover security deposits."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Post-Construction Cleaning",
+          "description": "Post-construction clean-up removing dust, debris and construction residue from new builds and renovations."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Office Cleaning & Janitorial Services",
+          "description": "Commercial office cleaning and janitorial services with flexible scheduling including early morning, evening and weekend slots."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Handyman Services",
+          "description": "Professional handyman services including minor repairs, installations and home maintenance for residential and commercial properties."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Airbnb & Short-Term Rental Turnover Cleaning",
+          "description": "Fast Airbnb turnover cleaning with restocking, linen changes and full clean between guests. Same-day availability."
+        }
+      }
+    ]
   }
 }
 </script>
@@ -119,80 +181,6 @@
 }
 </script>
 
-<script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "House Cleaning",
-    "description": "Regular residential house cleaning service in Charleston, Berkeley County and Dorchester County, SC. Includes kitchen, bathrooms, bedrooms, living areas, vacuuming, and mopping.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Residential Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Deep Cleaning",
-    "description": "Comprehensive deep cleaning service including inside appliances, cabinets, baseboards, ceiling fans, grout scrubbing, and full bathroom sanitization in Charleston SC.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Deep Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Move-In / Move-Out Cleaning",
-    "description": "Professional move-out and move-in cleaning in Charleston SC. Thorough enough to help recover security deposits. Covers appliances, cabinets, closets, and all surfaces.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Move-In Move-Out Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Post-Construction Cleaning",
-    "description": "Post-construction clean-up service removing dust, debris, and construction residue from new builds and renovations in Charleston, SC tri-county area.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Post-Construction Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Office Cleaning & Janitorial Services",
-    "description": "Commercial office cleaning and janitorial services for businesses in the Charleston metro area. Flexible scheduling including early morning, evening, and weekend slots.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Commercial Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Handyman Services",
-    "description": "Professional handyman services in Charleston SC including minor repairs, installations, and home maintenance for residential and commercial properties.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Handyman Services",
-    "url": "https://www.topcleanservicesllc.com/"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Airbnb & Short-Term Rental Turnover Cleaning",
-    "description": "Fast and reliable Airbnb turnover cleaning in Charleston SC. Restocking, linen changes, and full clean between guests. Same-day availability.",
-    "provider": {"@type": "LocalBusiness", "name": "Top Clean Cleaning & Services LLC"},
-    "areaServed": [{"@type": "City","name": "Charleston"},{"@type": "County","name": "Berkeley County"},{"@type": "County","name": "Dorchester County"}],
-    "serviceType": "Airbnb Turnover Cleaning",
-    "url": "https://www.topcleanservicesllc.com/"
-  }
-]
-</script>
 
 <script type="application/ld+json">
 {
