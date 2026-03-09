@@ -1,9 +1,39 @@
 {
   "version": 2,
   "builds": [
-    { "src": "**/*", "use": "@vercel/static" }
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/$1" }
+    {
+      "src": "/locations/charleston-sc",
+      "dest": "/locations/charleston-sc/"
+    },
+    {
+      "src": "/locations/north-charleston-sc",
+      "dest": "/locations/north-charleston-sc/"
+    },
+    {
+      "src": "/locations/mount-pleasant-sc",
+      "dest": "/locations/mount-pleasant-sc/"
+    },
+    {
+      "src": "/locations/goose-creek-sc",
+      "dest": "/locations/goose-creek-sc/"
+    },
+    {
+      "src": "/locations/summerville-sc",
+      "dest": "/locations/summerville-sc/"
+    },
+    {
+      "src": "/locations",
+      "dest": "/locations/"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
