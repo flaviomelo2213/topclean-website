@@ -226,8 +226,8 @@ section{padding:80px 0}
 .chat-toggle{position:fixed;bottom:28px;right:28px;width:60px;height:60px;background:linear-gradient(135deg,var(--blue),var(--sky));border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:25px;z-index:9999;box-shadow:0 8px 30px rgba(26,79,196,.4);transition:all .2s;animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 8px 30px rgba(26,79,196,.4)}50%{box-shadow:0 8px 30px rgba(26,79,196,.7),0 0 0 14px rgba(26,79,196,.08)}}
 .chat-toggle:hover{transform:scale(1.1);animation:none}
-.chat-window{position:fixed;bottom:102px;right:28px;width:350px;background:#fff;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.18);z-index:9999;display:none;flex-direction:column;overflow:hidden;max-height:520px}
-.chat-window.open{display:flex}
+.chat-window{position:fixed;bottom:102px;right:28px;width:350px;background:#fff;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.18);z-index:9999;display:none;flex-direction:column;overflow:hidden;max-height:520px;pointer-events:none}
+.chat-window.open{display:flex;pointer-events:auto}
 .chat-header{background:linear-gradient(135deg,var(--navy),#1a3a7a);padding:18px;color:#fff;display:flex;align-items:center;gap:12px}
 .chat-avatar{width:40px;height:40px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
 .chat-header strong{display:block;font-size:14px;font-weight:700}
@@ -840,6 +840,13 @@ function toggleChat(){
 function openChat(){toggleChat();}
 function isES(){return document.body.classList.contains('lang-es');}
 
+function setInputActive(on){
+  var inp=document.getElementById('chatInput');
+  var snd=document.querySelector('.chat-send');
+  if(inp){inp.disabled=!on;inp.style.opacity=on?'1':'0.45';inp.placeholder=on?inp.getAttribute('data-ph')||'Type a message...':'(choose an option above)';}
+  if(snd){snd.disabled=!on;snd.style.opacity=on?'1':'0.45';}
+}
+
 function addMsg(html,who,opts){
   var d=document.getElementById('chatMessages');
   var b=document.createElement('div');
@@ -858,11 +865,16 @@ function addMsg(html,who,opts){
         addMsg(o.label,'user');
         chatLead[LEAD_FIELDS[chatStep]]=o.value||o.label;
         chatStep++;
+        setInputActive(false);
         setTimeout(nextStep,350);
       };
       row.appendChild(btn);
     });
     d.appendChild(row);
+    setInputActive(false);
+  } else {
+    // text-input step: ensure input is active
+    if(who==='bot') setInputActive(true);
   }
   d.scrollTop=d.scrollHeight;
 }
@@ -871,16 +883,16 @@ function startChat(){
   chatStep=1;chatLead={};
   var es=isES();
   addMsg(
-    es?'\U0001f44b \u00a1Hola! Soy el asistente de Top Clean.<br>\u00bfQu\u00e9 servicio necesitas?'
-      :'\U0001f44b Hi! I\'m the Top Clean assistant.<br>What service do you need?',
+    es?'👋 \u00a1Hola! Soy el asistente de Top Clean.<br>\u00bfQu\u00e9 servicio necesitas?'
+      :'👋 Hi! I\'m the Top Clean assistant.<br>What service do you need?',
     'bot',
-    es?[{label:'\U0001f9f9 Limpieza',value:'Cleaning'},
-        {label:'\U0001f6e0\ufe0f Handyman',value:'Handyman'},
-        {label:'\U0001f3e0 Ambos',value:'Both'},
+    es?[{label:'🧹 Limpieza',value:'Cleaning'},
+        {label:'🛠\ufe0f Handyman',value:'Handyman'},
+        {label:'🏠 Ambos',value:'Both'},
         {label:'\u2753 No s\u00e9',value:'Not sure'}]
-      :[{label:'\U0001f9f9 Cleaning',value:'Cleaning'},
-        {label:'\U0001f6e0\ufe0f Handyman',value:'Handyman'},
-        {label:'\U0001f3e0 Both',value:'Both'},
+      :[{label:'🧹 Cleaning',value:'Cleaning'},
+        {label:'🛠\ufe0f Handyman',value:'Handyman'},
+        {label:'🏠 Both',value:'Both'},
         {label:'\u2753 Not sure',value:'Not sure'}]
   );
 }
@@ -892,32 +904,32 @@ function nextStep(){
       addMsg(
         es?'\u00bfEs residencial o comercial?':'Residential or commercial?',
         'bot',
-        es?[{label:'\U0001f3e0 Residencial',value:'Residential'},{label:'\U0001f3e2 Comercial',value:'Commercial'}]
-          :[{label:'\U0001f3e0 Residential',value:'Residential'},{label:'\U0001f3e2 Commercial',value:'Commercial'}]
+        es?[{label:'🏠 Residencial',value:'Residential'},{label:'🏢 Comercial',value:'Commercial'}]
+          :[{label:'🏠 Residential',value:'Residential'},{label:'🏢 Commercial',value:'Commercial'}]
       );break;
     case 3:
-      addMsg(es?'\U0001f4cd C\u00f3digo ZIP:':'\U0001f4cd ZIP code:','bot');break;
+      addMsg(es?'📍 C\u00f3digo ZIP:':'📍 ZIP code:','bot');break;
     case 4:
-      addMsg(es?'\U0001f464 Tu nombre:':'\U0001f464 Your name:','bot');break;
+      addMsg(es?'👤 Tu nombre:':'👤 Your name:','bot');break;
     case 5:
-      addMsg(es?'\U0001f4f1 N\u00famero de tel\u00e9fono:':'\U0001f4f1 Phone number:','bot');break;
+      addMsg(es?'📱 N\u00famero de tel\u00e9fono:':'📱 Phone number:','bot');break;
     case 6:
-      addMsg(es?'\U0001f4e7 Email (o escribe "no"):':'\U0001f4e7 Email (or type "skip"):','bot');break;
+      addMsg(es?'📧 Email (o escribe "no"):':'📧 Email (or type "skip"):','bot');break;
     case 7:
-      addMsg(es?'\U0001f3e0 Direcci\u00f3n de la propiedad (o "no"):':'\U0001f3e0 Property address (or "skip"):','bot');break;
+      addMsg(es?'🏠 Direcci\u00f3n de la propiedad (o "no"):':'🏠 Property address (or "skip"):','bot');break;
     case 8:
-      addMsg(es?'\U0001f4dd Detalles adicionales (tama\u00f1o, frecuencia, necesidades especiales):':'\U0001f4dd Additional details (size, frequency, special needs):','bot');break;
+      addMsg(es?'📝 Detalles adicionales (tama\u00f1o, frecuencia, necesidades especiales):':'📝 Additional details (size, frequency, special needs):','bot');break;
     case 9:
       addMsg(
         es?'\u23f0 Mejor horario para contactarte?':'\u23f0 Best time to reach you?',
         'bot',
-        es?[{label:'\U0001f31e Ma\u00f1ana 8am-12pm',value:'Morning'},
+        es?[{label:'🌞 Ma\u00f1ana 8am-12pm',value:'Morning'},
             {label:'\u2600\ufe0f Tarde 12pm-5pm',value:'Afternoon'},
-            {label:'\U0001f315 Noche 5pm-8pm',value:'Evening'},
+            {label:'🌕 Noche 5pm-8pm',value:'Evening'},
             {label:'\u2705 Cualquier hora',value:'Anytime'}]
-          :[{label:'\U0001f31e Morning 8am-12pm',value:'Morning'},
+          :[{label:'🌞 Morning 8am-12pm',value:'Morning'},
             {label:'\u2600\ufe0f Afternoon 12pm-5pm',value:'Afternoon'},
-            {label:'\U0001f315 Evening 5pm-8pm',value:'Evening'},
+            {label:'🌕 Evening 5pm-8pm',value:'Evening'},
             {label:'\u2705 Anytime',value:'Anytime'}]
       );break;
     case 10:
@@ -946,7 +958,7 @@ function submitLead(){
   var nm=chatLead.name||'';
   var payload={
     access_key:WEB3FORMS_KEY,
-    subject:'\U0001f9f9 New Lead \u2014 Top Clean Chat: '+(nm||'Unknown'),
+    subject:'🧹 New Lead \u2014 Top Clean Chat: '+(nm||'Unknown'),
     from_name:'Top Clean Website',
     replyto:chatLead.email||'no-reply@topcleanservicesllc.com',
     'Service':chatLead.service||'\u2014',
@@ -978,16 +990,16 @@ function showConfirm(es,tally,nm){
   var n=nm?' '+nm:'';
   addMsg(
     es?'\u2705 <b>\u00a1Gracias'+n+'!</b> Recibimos tu solicitud.<br>Te contactamos en <b>menos de 1 hora</b> al n\u00famero '+
-       (chatLead.phone||'informado')+'.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">\U0001f4cb Formulario completo</a>'
-      :'\u2705 <b>Thank you'+n+'!</b> We got your request.<br>We\'ll call/text you at <b>'+(chatLead.phone||'your number')+' within 1 hour</b>.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">\U0001f4cb Full Quote Form</a>',
+       (chatLead.phone||'informado')+'.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">📋 Formulario completo</a>'
+      :'\u2705 <b>Thank you'+n+'!</b> We got your request.<br>We\'ll call/text you at <b>'+(chatLead.phone||'your number')+' within 1 hour</b>.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">📋 Full Quote Form</a>',
     'bot'
   );
 }
 
 function showFallback(es,tally){
   addMsg(
-    es?'\u26a0\ufe0f Error al enviar. Ll\u00e1manos:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">\U0001f4de 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">\U0001f4cb Formulario</a>'
-      :'\u26a0\ufe0f Submission error. Please call:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">\U0001f4de 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">\U0001f4cb Quote Form</a>',
+    es?'\u26a0\ufe0f Error al enviar. Ll\u00e1manos:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Formulario</a>'
+      :'\u26a0\ufe0f Submission error. Please call:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Quote Form</a>',
     'bot'
   );
 }
