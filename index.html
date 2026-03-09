@@ -711,27 +711,103 @@ body.lang-pt [data-lang="pt"]{display:unset}
         </div>
       </div>
       <div class="quote-form reveal" id="estimate">
-        <h3 data-lang="en">Get a Free Estimate</h3><h3 data-lang="es">Obtener Presupuesto Gratis</h3><h3 data-lang="pt">Obter Orçamento Gratuito</h3>
-        <div data-lang="en">
-          <p style="text-align:center;margin-bottom:10px"><a href="https://tally.so/r/vGByMA" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;text-decoration:none;padding:10px 20px;font-size:14px">&#128196; Open Quote Form</a></p>
-          <iframe src="https://tally.so/r/vGByMA?transparentBackground=1"
-                  loading="eager" width="100%" height="950"
-                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
-                  title="Top Clean - Free Quote"></iframe>
+        <h3 data-lang="en">Get a Free Estimate</h3>
+        <h3 data-lang="es">Obtener Presupuesto Gratis</h3>
+        <h3 data-lang="pt">Obter Orçamento Gratuito</h3>
+        <p data-lang="en">Fill in the details — we respond within 1 hour during business hours.</p>
+        <p data-lang="es">Completa los datos — respondemos en 1 hora en horario hábil.</p>
+        <p data-lang="pt">Preencha os dados — respondemos em 1 hora no horário comercial.</p>
+        <div id="quoteSuccess" class="success-msg">
+          <span data-lang="en">✅ <b>Request sent!</b> We’ll text/call you within 1 hour.</span>
+          <span data-lang="es">✅ <b>¡Solicitud enviada!</b> Te contactamos en menos de 1 hora.</span>
+          <span data-lang="pt">✅ <b>Pedido enviado!</b> Entraremos em contato em até 1 hora.</span>
         </div>
-        <div data-lang="es">
-          <p style="text-align:center;margin-bottom:10px"><a href="https://tally.so/r/VLl5QE" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex;text-decoration:none;padding:10px 20px;font-size:14px">&#128196; Abrir formulario</a></p>
-          <iframe src="https://tally.so/r/VLl5QE?transparentBackground=1"
-                  loading="eager" width="100%" height="950"
-                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
-                  title="Top Clean - Presupuesto Gratis"></iframe>
-        </div>
-        <div data-lang="pt">
-          <iframe src="https://tally.so/r/vGByMA?transparentBackground=1"
-                  loading="eager" width="100%" height="950"
-                  allow="clipboard-read; clipboard-write" style="border:0; border-radius:12px; pointer-events:auto;"
-                  title="Top Clean - Orçamento Gratuito"></iframe>
-        </div>
+        <form id="quoteForm" onsubmit="submitQuoteForm(event)" novalidate>
+          <div class="form-2col">
+            <div class="form-group">
+              <label><span data-lang="en">Service *</span><span data-lang="es">Servicio *</span><span data-lang="pt">Serviço *</span></label>
+              <select name="service" id="qService" required>
+                <option value="">-- Select / Seleccionar --</option>
+                <option value="Cleaning">🧹 Cleaning / Limpieza</option>
+                <option value="Handyman">🛠 Handyman</option>
+                <option value="Both">🏠 Both / Ambos</option>
+                <option value="Not sure">❓ Not sure / No sé</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><span data-lang="en">Property Type *</span><span data-lang="es">Tipo de Propiedad *</span><span data-lang="pt">Tipo de Imóvel *</span></label>
+              <select name="propType" id="qPropType" required>
+                <option value="">-- Select --</option>
+                <option value="Residential">🏠 Residential / Residencial</option>
+                <option value="Commercial">🏢 Commercial / Comercial</option>
+                <option value="Office">💻 Office / Oficina</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-2col">
+            <div class="form-group">
+              <label><span data-lang="en">Full Name *</span><span data-lang="es">Nombre Completo *</span><span data-lang="pt">Nome Completo *</span></label>
+              <input type="text" name="name" id="qName" required placeholder="John Smith">
+            </div>
+            <div class="form-group">
+              <label><span data-lang="en">Phone *</span><span data-lang="es">Teléfono *</span><span data-lang="pt">Telefone *</span></label>
+              <input type="tel" name="phone" id="qPhone" required placeholder="(843) 000-0000">
+            </div>
+          </div>
+          <div class="form-2col">
+            <div class="form-group">
+              <label><span data-lang="en">ZIP Code *</span><span data-lang="es">Código ZIP *</span><span data-lang="pt">CEP *</span></label>
+              <input type="text" name="zip" id="qZip" required placeholder="29401" maxlength="10">
+            </div>
+            <div class="form-group">
+              <label><span data-lang="en">Email (optional)</span><span data-lang="es">Email (opcional)</span><span data-lang="pt">Email (opcional)</span></label>
+              <input type="email" name="email" id="qEmail" placeholder="you@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label><span data-lang="en">Property Address (optional)</span><span data-lang="es">Dirección (opcional)</span><span data-lang="pt">Endereço (opcional)</span></label>
+            <input type="text" name="address" id="qAddress" placeholder="123 Main St, Charleston SC">
+          </div>
+          <div class="form-2col">
+            <div class="form-group">
+              <label><span data-lang="en">Preferred Time</span><span data-lang="es">Horario preferido</span><span data-lang="pt">Horário preferido</span></label>
+              <select name="bestTime" id="qBestTime">
+                <option value="Anytime">✅ Anytime / Cualquier hora</option>
+                <option value="Morning">🌞 Morning 8am–12pm</option>
+                <option value="Afternoon">☀️ Afternoon 12–5pm</option>
+                <option value="Evening">🌕 Evening 5–8pm</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label><span data-lang="en">Frequency</span><span data-lang="es">Frecuencia</span><span data-lang="pt">Frequência</span></label>
+              <select name="frequency" id="qFrequency">
+                <option value="One-time">1× One-time / Una vez</option>
+                <option value="Weekly">📅 Weekly / Semanal</option>
+                <option value="Biweekly">📅 Biweekly / Quincenal</option>
+                <option value="Monthly">📅 Monthly / Mensual</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><span data-lang="en">Property Size</span><span data-lang="es">Tamaño de propiedad</span><span data-lang="pt">Tamanho do imóvel</span></label>
+            <select name="size" id="qSize">
+              <option value="">-- Select --</option>
+              <option value="&lt;1000 sqft">Under 1,000 sqft</option>
+              <option value="1000-2000 sqft">1,000–2,000 sqft</option>
+              <option value="2000-3000 sqft">2,000–3,000 sqft</option>
+              <option value="3000+ sqft">3,000+ sqft</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><span data-lang="en">Details / Notes</span><span data-lang="es">Detalles / Notas</span><span data-lang="pt">Detalhes / Observações</span></label>
+            <textarea name="details" id="qDetails" placeholder="e.g. Move-out cleaning, 3BR 2BA, post construction, kitchen deep clean…"></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="quoteSubmitBtn">
+            <span data-lang="en">🚀 Get My Free Quote</span>
+            <span data-lang="es">🚀 Obtener Cotización Gratis</span>
+            <span data-lang="pt">🚀 Obter Orçamento Gratuito</span>
+          </button>
+        </form>
       </div>
     </div>
   </div>
@@ -828,6 +904,79 @@ function setLang(lang){
 // ── Chat ─ multi-step lead collector ─────────────────────────
 // IMPORTANT: get your FREE key at https://web3forms.com then paste it below
 var WEB3FORMS_KEY='aeb7a0b2-7d5c-4d99-aca9-9790cebe372e';
+var PHONE_PRIMARY='843-937-3641';
+var PHONE_SECONDARY='854-500-6258';
+
+// ── Unified lead pipeline (chat + quote form) ───────────────────
+function getUTMs(){
+  var p=new URLSearchParams(window.location.search);
+  return {utm_source:p.get('utm_source')||'',utm_medium:p.get('utm_medium')||'',
+    utm_campaign:p.get('utm_campaign')||'',utm_content:p.get('utm_content')||'',
+    utm_term:p.get('utm_term')||'',gclid:p.get('gclid')||'',fbclid:p.get('fbclid')||''};
+}
+function fireTracking(source){
+  try{if(window.gtag)gtag('event','generate_lead',{method:source});}catch(e){}
+  try{if(window.fbq)fbq('track','Lead');}catch(e){}
+}
+function submitLeadToAPI(payload,source){
+  var utms=getUTMs();
+  var enriched=Object.assign({},payload,utms,{
+    source:source,page_url:window.location.href,
+    timestamp:new Date().toISOString()
+  });
+  var configured=(WEB3FORMS_KEY!=='COLOQUE_SUA_CHAVE_WEB3FORMS_AQUI');
+  if(!configured){fireTracking(source);return Promise.resolve({success:true,demo:true});}
+  return fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(enriched)
+  }).then(function(r){return r.json();})
+    .then(function(d){if(d.success)fireTracking(source);return d;})
+    .catch(function(e){console.error('Web3Forms error',e);return{success:false};});
+}
+
+// ── Quote Form handler ──────────────────────────────────────────
+function submitQuoteForm(ev){
+  ev.preventDefault();
+  var f=document.getElementById('quoteForm');
+  var btn=document.getElementById('quoteSubmitBtn');
+  var suc=document.getElementById('quoteSuccess');
+  var es=isES();
+  var pt=document.body.classList.contains('lang-pt');
+  var g=function(n){var el=f.querySelector('[name="'+n+'"]');return el?(el.value||'').trim():''};
+  var name=g('name'),phone=g('phone'),zip=g('zip');
+  if(!name||!phone||!zip){
+    alert(es?'Por favor completa: Nombre, Teléfono y ZIP.':pt?'Por favor preencha: Nome, Telefone e CEP.':'Please fill in: Name, Phone and ZIP.');
+    return;
+  }
+  var payload={
+    access_key:WEB3FORMS_KEY,
+    subject:'🧹 New Lead — Free Quote: '+(name||'Unknown'),
+    from_name:'Top Clean Website',
+    replyto:g('email')||'no-reply@topcleanservicesllc.com',
+    'Service':g('service')||'—','Property_Type':g('propType')||'—',
+    'ZIP':zip||'—','Name':name||'—','Phone':phone||'—',
+    'Email':g('email')||'—','Address':g('address')||'—',
+    'Frequency':g('frequency')||'—','Size':g('size')||'—',
+    'Details':g('details')||'—','Best_Time':g('bestTime')||'—',
+    'Language':es?'Spanish':pt?'Portuguese':'English'
+  };
+  btn.disabled=true;
+  btn.textContent=es?'⏳ Enviando...':'⏳ Sending...';
+  submitLeadToAPI(payload,'free_quote')
+    .then(function(d){
+      if(d.success||d.demo){
+        suc.style.display='block';f.reset();btn.style.display='none';
+        suc.scrollIntoView({behavior:'smooth',block:'center'});
+      } else {
+        btn.disabled=false;
+        btn.textContent=es?'🚀 Obtener Cotización Gratis':'🚀 Get My Free Quote';
+      }
+    })
+    .catch(function(){
+      btn.disabled=false;
+      btn.textContent=es?'🚀 Obtener Cotización Gratis':'🚀 Get My Free Quote';
+    });
+}
 
 var chatOpen=false,chatStep=0,chatLead={};
 var LEAD_FIELDS=['','service','propType','zip','name','phone','email','address','details','bestTime','done'];
@@ -953,7 +1102,6 @@ function sendChat(){
 
 function submitLead(){
   var es=isES();
-  var tally=es?'https://tally.so/r/VLl5QE':'https://tally.so/r/vGByMA';
   addMsg(es?'\u23f3 Enviando solicitud...':'\u23f3 Sending your request...','bot');
   var nm=chatLead.name||'';
   var payload={
@@ -961,45 +1109,30 @@ function submitLead(){
     subject:'🧹 New Lead \u2014 Top Clean Chat: '+(nm||'Unknown'),
     from_name:'Top Clean Website',
     replyto:chatLead.email||'no-reply@topcleanservicesllc.com',
-    'Service':chatLead.service||'\u2014',
-    'Property_Type':chatLead.propType||'\u2014',
-    'ZIP':chatLead.zip||'\u2014',
-    'Name':nm||'\u2014',
-    'Phone':chatLead.phone||'\u2014',
-    'Email':chatLead.email||'\u2014',
-    'Address':chatLead.address||'\u2014',
-    'Details':chatLead.details||'\u2014',
-    'Best_Time':chatLead.bestTime||'\u2014',
+    'Service':chatLead.service||'\u2014','Property_Type':chatLead.propType||'\u2014',
+    'ZIP':chatLead.zip||'\u2014','Name':nm||'\u2014','Phone':chatLead.phone||'\u2014',
+    'Email':chatLead.email||'\u2014','Address':chatLead.address||'\u2014',
+    'Details':chatLead.details||'\u2014','Best_Time':chatLead.bestTime||'\u2014',
     'Language':es?'Spanish':'English'
   };
-  var configured=(WEB3FORMS_KEY!=='COLOQUE_SUA_CHAVE_WEB3FORMS_AQUI');
-  if(configured){
-    fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify(payload)
-    }).then(function(r){return r.json();})
-      .then(function(d){d.success?showConfirm(es,tally,nm):showFallback(es,tally);})
-      .catch(function(){showFallback(es,tally);});
-  } else {
-    setTimeout(function(){showConfirm(es,tally,nm);},500);
-  }
+  submitLeadToAPI(payload,'chat')
+    .then(function(d){d&&d.success?showConfirm(es,nm):showFallback(es);})
+    .catch(function(){showFallback(es);});
 }
 
-function showConfirm(es,tally,nm){
+function showConfirm(es,nm){
   var n=nm?' '+nm:'';
   addMsg(
-    es?'\u2705 <b>\u00a1Gracias'+n+'!</b> Recibimos tu solicitud.<br>Te contactamos en <b>menos de 1 hora</b> al n\u00famero '+
-       (chatLead.phone||'informado')+'.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">📋 Formulario completo</a>'
-      :'\u2705 <b>Thank you'+n+'!</b> We got your request.<br>We\'ll call/text you at <b>'+(chatLead.phone||'your number')+' within 1 hour</b>.<br><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:6px 0;text-decoration:none;padding:9px 16px;font-size:13px">📋 Full Quote Form</a>',
+    es?'\u2705 <b>\u00a1Gracias'+n+'!</b> Recibimos tu solicitud.<br>Te contactaremos en <b>menos de 1 hora</b> al n\u00famero '+(chatLead.phone||'informado')+'.'
+      :'\u2705 <b>Thank you'+n+'!</b> We received your request.<br>We\u2019ll text/call you at <b>'+(chatLead.phone||'your number')+' within 1\u00a0hour</b>.',
     'bot'
   );
 }
 
-function showFallback(es,tally){
+function showFallback(es){
   addMsg(
-    es?'\u26a0\ufe0f Error al enviar. Ll\u00e1manos:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Formulario</a>'
-      :'\u26a0\ufe0f Submission error. Please call:<br><a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a><br><a href="'+tally+'" target="_blank" class="btn-primary" style="display:inline-flex;margin:4px 0;text-decoration:none;padding:8px 14px;font-size:13px">📋 Quote Form</a>',
+    es?'\u26a0\ufe0f Error al enviar. Cont\u00e1ctanos:<br><a href="tel:+18439373641" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">💬 843-937-3641</a>\u00a0<a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a>'
+      :'\u26a0\ufe0f Submission error. Please text/call:<br><a href="tel:+18439373641" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">💬 843-937-3641</a>\u00a0<a href="tel:+18545006258" class="btn-call" style="display:inline-flex;margin:4px 0;padding:8px 14px;font-size:13px">📞 854-500-6258</a>',
     'bot'
   );
 }
@@ -1021,6 +1154,10 @@ function openEstimate(e){
   var y=el.getBoundingClientRect().top+window.pageYOffset-110;
   window.scrollTo({top:y,behavior:'smooth'});
   history.pushState(null,null,'#estimate');
+  setTimeout(function(){
+    var inp=el.querySelector('select,input[type="text"],input[type="tel"],input[type="email"],textarea');
+    if(inp)inp.focus();
+  },650);
 }
 (function(){
   function goEstimate(){
@@ -1039,6 +1176,6 @@ function openEstimate(e){
   window.addEventListener('load',goEstimate);
 })();
 </script>
-<script async src="https://tally.so/widgets/embed.js"></script>
+<!-- Tally embed removed: native form active -->
 </body>
 </html>
