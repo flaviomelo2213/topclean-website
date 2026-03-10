@@ -231,9 +231,6 @@ h1,h2,h3,h4{font-family:'Syne',sans-serif}
 .lang-bar .container{display:flex;justify-content:space-between;align-items:center}
 .lang-bar-left{color:rgba(255,255,255,0.6);font-size:13px}
 .lang-bar-left a{color:#60a5fa;text-decoration:none}
-.lang-btns{display:flex;gap:8px}
-.lang-btn{background:none;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);padding:4px 14px;border-radius:20px;cursor:pointer;font-size:13px;font-family:'DM Sans',sans-serif;transition:all .2s}
-.lang-btn.active{background:var(--sky);border-color:var(--sky);color:#fff}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(26,79,196,.1);box-shadow:0 2px 20px rgba(0,0,0,.06)}
@@ -437,12 +434,7 @@ footer{background:var(--navy);color:#fff;padding:64px 0 28px}
 .footer-logo img{height:40px;width:auto;opacity:.8}
 
 /* LANGUAGE */
-[data-lang="es"]{display:none}
-[data-lang="pt"]{display:none}
-body.lang-es [data-lang="en"]{display:none}
-body.lang-es [data-lang="es"]{display:unset}
-body.lang-pt [data-lang="en"]{display:none}
-body.lang-pt [data-lang="pt"]{display:unset}
+[data-lang="es"],[data-lang="pt"]{display:none!important}
 .dn{display:none!important}
 .db{display:block!important}
 
@@ -454,6 +446,7 @@ body.lang-pt [data-lang="pt"]{display:unset}
 @media(max-width:900px){
 .nav-links,.nav-cta .btn-primary{display:none}
 .mobile-menu-btn{display:block}
+.hero{min-height:auto;padding:48px 0}
 .hero-grid{grid-template-columns:1fr}
 .hero-image-wrap{display:none}
 .services-grid{grid-template-columns:1fr 1fr}
@@ -471,9 +464,19 @@ body.lang-pt [data-lang="pt"]{display:unset}
 .chat-window{right:10px;left:10px;width:auto}
 }
 @media(max-width:560px){
+section{padding:48px 0}
+.hero{padding:36px 0}
 .services-grid{grid-template-columns:1fr}
 .steps-grid{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr}
+.svc-extra-card{min-width:calc(50% - 8px)!important;flex:1 1 calc(50% - 8px)}
+.chat-toggle{bottom:16px;right:16px;width:54px;height:54px;font-size:22px}
+.chat-window{bottom:84px;max-height:75vh}
+.lang-bar-left{font-size:11px}
+.hero-btns{flex-direction:column}
+.btn-hero,.btn-wa{width:100%;justify-content:center}
+.hero-stats{gap:16px}
+.hero-stat strong{font-size:22px}
 }
 </style>
 </head>
@@ -483,10 +486,6 @@ body.lang-pt [data-lang="pt"]{display:unset}
 <div class="lang-bar">
   <div class="container">
     <div class="lang-bar-left">📍 Charleston, Berkeley & Dorchester County, SC &nbsp;|&nbsp; <a href="tel:+18545006258">854-500-6258</a></div>
-    <div class="lang-btns">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇺🇸 English</button>
-      <button class="lang-btn" id="btn-es" onclick="setLang('es')">🇪🇸 Español</button>
-    </div>
   </div>
 </div>
 
@@ -616,17 +615,17 @@ body.lang-pt [data-lang="pt"]{display:unset}
     </div>
     <!-- Extra services row -->
     <div style="display:flex;gap:16px;margin-top:20px;flex-wrap:wrap;justify-content:center" class="reveal">
-      <div style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
+      <div class="svc-extra-card" style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
         <div style="font-size:28px;margin-bottom:6px">🧹</div>
         <strong style="font-size:14px;color:var(--navy)" data-lang="en">Carpet Cleaning</strong>
         <strong style="font-size:14px;color:var(--navy)" data-lang="es">Limpieza de Alfombras</strong>
       </div>
-      <div style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
+      <div class="svc-extra-card" style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
         <div style="font-size:28px;margin-bottom:6px">🏠</div>
         <strong style="font-size:14px;color:var(--navy)" data-lang="en">Houses & Apartments</strong>
         <strong style="font-size:14px;color:var(--navy)" data-lang="es">Casas y Apartamentos</strong>
       </div>
-      <div style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
+      <div class="svc-extra-card" style="background:var(--lightblue);border-radius:14px;padding:16px 24px;text-align:center;min-width:160px">
         <div style="font-size:28px;margin-bottom:6px">🏗️</div>
         <strong style="font-size:14px;color:var(--navy)" data-lang="en">Buildings</strong>
         <strong style="font-size:14px;color:var(--navy)" data-lang="es">Edificios</strong>
@@ -1209,17 +1208,6 @@ body.lang-pt [data-lang="pt"]{display:unset}
 </div>
 
 <script>
-// ── Language ──────────────────────────────────────────────────
-function setLang(lang){
-  document.body.classList.toggle('lang-es',lang==='es');
-  document.body.classList.toggle('lang-pt',lang==='pt');
-  document.getElementById('btn-en').classList.toggle('active',lang==='en');
-  document.getElementById('btn-es').classList.toggle('active',lang==='es');
-  localStorage.setItem('tc_lang',lang);
-  var ph=document.getElementById('chatInput');
-  if(ph)ph.placeholder=lang==='es'?'Escribe un mensaje...':'Type a message...';
-}
-(function(){var l=localStorage.getItem('tc_lang');if(l==='es')setLang('es');})();
 
 // ── Chat ─ multi-step lead collector ─────────────────────────
 // IMPORTANT: get your FREE key at https://web3forms.com then paste it below
@@ -1307,7 +1295,7 @@ function toggleChat(){
   if(chatOpen&&chatPhase==='')startChat();
 }
 function openChat(){toggleChat();}
-function isES(){return document.body.classList.contains('lang-es');}
+function isES(){return false;}
 
 function setInputActive(on){
   var inp=document.getElementById('chatInput');
