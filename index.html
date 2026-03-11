@@ -1281,8 +1281,7 @@ function submitQuoteForm(ev){
   submitLeadToAPI(payload,'free_quote')
     .then(function(d){
       if(d.success||d.demo){
-        suc.style.display='block';f.reset();btn.style.display='none';
-        suc.scrollIntoView({behavior:'smooth',block:'center'});
+        window.location.href='/thank-you.html';
       } else {
         btn.disabled=false;
         btn.textContent=es?'🚀 Obtener Cotización Gratis':'🚀 Get My Free Quote';
